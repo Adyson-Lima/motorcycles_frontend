@@ -12,8 +12,12 @@ describe('Testes da tela Motorcycles', () => {
     );
   });
 
-  it('existe card em Motorcycles?', () => {
+  it('Existe card em Motorcycles?', () => {
     expect(screen.getByTestId('mycard')).toBeInTheDocument();
+  });
+
+  it('Existe link Novo em Motorcycles?', () => {
+    expect(screen.getByTestId('mylink')).toBeInTheDocument();
   });
 
 });
