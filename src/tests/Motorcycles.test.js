@@ -20,6 +20,8 @@ describe('Testes da tela Motorcycles', () => {
     expect(screen.getByTestId('mylink')).toBeInTheDocument();
   });
 
-  
+  it('Existe tabela em Motorcycles?', () => {
+    expect(screen.getByTestId('mytable')).toBeInTheDocument();
+  });
 
 });
