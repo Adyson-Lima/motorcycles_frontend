@@ -1,7 +1,8 @@
+import MotorcyclesRouter from "./routes";
 
 function App() {
   return (
-    <></>
+    <MotorcyclesRouter/>
   );
 }
 
