@@ -1,8 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, {useState, useEffect} from "react";
-// import api from '../../services/api';
+import api from '../../services/api';
 
 export default function Motorcycles(){
+
+  const[my_motorcycles, setMotorcycles] = useState([]);
+  const navigate = useNavigate();
+
+  // Read, busca todos os registros na api
+  useEffect(() => {
+    api.get('api/v1/motorcycles', {})
+    .then(response => {setMotorcycles(response.data)})
+  }, []);
 
   return(
 
@@ -18,27 +27,30 @@ export default function Motorcycles(){
         <table data-testid="mytable" className="table table-hover">
           <thead>
             <tr>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
+              <th scope="col">Id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td>
-
-                  <button data-testid="mybtn1" type="button"
-                  className="btn btn-outline-info">Editar</button>
-
-                  <button data-testid="mybtn2" type="button"
-                  className="btn btn-outline-danger">Excluir</button>
-
-                </td>
-            </tr>
+            {my_motorcycles.map(motorcycle => (
+               <tr key={motorcycle.id}>
+                  <th scope="row">{motorcycle.id}</th>
+                    <td>{motorcycle.name}</td>
+                    <td>{motorcycle.category}</td>
+                    <td>
+    
+                      <button data-testid="mybtn1" type="button"
+                      className="btn btn-outline-info">Editar</button>
+    
+                      <button data-testid="mybtn2" type="button"
+                      className="btn btn-outline-danger">Excluir</button>
+    
+                    </td>
+                </tr>
+            ))}
+           
           </tbody>
         </table>
 
