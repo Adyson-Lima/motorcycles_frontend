@@ -16,4 +16,6 @@ describe('Testes da tela NewUpdate', () => {
     expect(screen.getByTestId('mycard')).toBeInTheDocument();
   });
 
+  
+
 });
