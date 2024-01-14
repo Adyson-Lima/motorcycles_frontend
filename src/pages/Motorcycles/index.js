@@ -13,6 +13,15 @@ export default function Motorcycles(){
     .then(response => {setMotorcycles(response.data)})
   }, []);
 
+  // Update, navega para tela NewUpdate
+  async function updateMotorcycle(id){
+    try {
+      navigate(`/newupdate/${id}`);      
+    } catch (error) {
+      alert('Erro ao navegar');      
+    }
+  }
+
   return(
 
     <div data-testid="mycard" className="card border-primary" style={{marginTop: '20px'}} >
@@ -42,7 +51,8 @@ export default function Motorcycles(){
                     <td>
     
                       <button data-testid="mybtn1" type="button"
-                      className="btn btn-outline-info">Editar</button>
+                      className="btn btn-outline-info" style={{margin: '2px'}}
+                      onClick={() => updateMotorcycle(motorcycle.id)}>Editar</button>
     
                       <button data-testid="mybtn2" type="button"
                       className="btn btn-outline-danger">Excluir</button>
