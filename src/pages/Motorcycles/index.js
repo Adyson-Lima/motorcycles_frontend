@@ -22,6 +22,16 @@ export default function Motorcycles(){
     }
   }
 
+  // Delete, exclui um registro na api
+  async function deleteMotorcycle(id){
+    try {
+      await api.delete(`api/v1/motorcycles/${id}`, {});
+      setMotorcycles(my_motorcycles.filter(motorcycle => motorcycle.id !== id));      
+    } catch (error) {
+      alert('Erro ao excluir');      
+    }
+  }
+
   return(
 
     <div data-testid="mycard" className="card border-primary" style={{marginTop: '20px'}} >
@@ -55,7 +65,8 @@ export default function Motorcycles(){
                       onClick={() => updateMotorcycle(motorcycle.id)}>Editar</button>
     
                       <button data-testid="mybtn2" type="button"
-                      className="btn btn-outline-danger">Excluir</button>
+                      className="btn btn-outline-danger" style={{margin: '2px'}}
+                      onClick={() => deleteMotorcycle(motorcycle.id)}>Excluir</button>
     
                     </td>
                 </tr>
